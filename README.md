@@ -2,22 +2,29 @@
 
 Простая социальная сеть с лентой постов и авторизацией пользователей
 
-## Основной стек:
-
+## Инструменты:
+### Основной стек:
 - FastAPI
 - SQLAlchemy
 - Postgres + asyncpg
-
+- 
+### Дополнительные инструменты:
+- FastAPI
 - Poetry
 - black
 - uvicorn
+- Alembic
+- pytest + pytest-asyncio
+- httpx
 
 
 ## Roadmap
 - [x] Структура проекта
 - [x] Подключение к базе данных
 - [x] Подключить pydantic-settings
-- [x] Подключить Alembic alembic init --template async alembic
+- [x] Подключить Alembic $ alembic init --template async alembic
+- [ ] Добавить тестирование
+  - [ ] создать базу для тестирования
 - [ ] Летна постов
     - [x] Модель поста
     - [x] Создание поста

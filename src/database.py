@@ -1,14 +1,20 @@
 from typing import Annotated
 
 from fastapi import Depends
+from sqlalchemy import NullPool
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 
 from src.config import settings
 
-# DATABASE_URL = "postgresql+asyncpg://postgres:root@localhost:5432/pyposter"
-DATABASE_URL = settings.DATABASE_URL
+if settings.MODE == "TEST":
+    DATABASE_URL = settings.TEST_DATABASE_URL
+    # to fix RuntimeError: Task <Task pending name='Task-4'
+    DATABASE_PARAMS = {"poolclass": NullPool}
+else:
+    DATABASE_URL = settings.DATABASE_URL
+    DATABASE_PARAMS = {}
 
-async_engine = create_async_engine(DATABASE_URL, echo=True)
+async_engine = create_async_engine(DATABASE_URL, **DATABASE_PARAMS, echo=True)
 async_session = async_sessionmaker(async_engine, expire_on_commit=False)
 
 # Dependency
