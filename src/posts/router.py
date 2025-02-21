@@ -5,24 +5,19 @@ from starlette import status
 from src.database import SessionDep
 from src.posts.models import Post
 from src.posts.schemas import PostCreate
+from src.posts.service import PostService
 
 post_router = APIRouter()
 
 
 @post_router.get("")
 async def get_all_posts(session: SessionDep):
-    stmt = select(Post)
-    result = await session.execute(stmt)
-    users = result.scalars().all()
-    return users
+    return await PostService.get_all(session)
 
 
-@post_router.post("")
+@post_router.post("", status_code=status.HTTP_201_CREATED)
 async def create_post(session: SessionDep, post_data: PostCreate):
-    post = Post(**post_data.model_dump())
-    session.add(post)
-    await session.commit()
-    return post
+    return await PostService.create(session, post_data)
 
 
 @post_router.delete("/{post_id}", status_code=status.HTTP_204_NO_CONTENT)
