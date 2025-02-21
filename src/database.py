@@ -3,8 +3,10 @@ from typing import Annotated
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 
-DATABASE_URL = "postgresql+asyncpg://postgres:root@localhost:5432/pyposter"
+from src.config import settings
 
+# DATABASE_URL = "postgresql+asyncpg://postgres:root@localhost:5432/pyposter"
+DATABASE_URL = settings.DATABASE_URL
 
 async_engine = create_async_engine(DATABASE_URL, echo=True)
 async_session = async_sessionmaker(async_engine, expire_on_commit=False)
