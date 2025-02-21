@@ -20,7 +20,8 @@
 - [x] Подключить Alembic alembic init --template async alembic
 - [ ] Летна постов
     - [x] Модель поста
-    - [ ] Создание поста
+    - [x] Создание поста
+    - [ ] CRUD для Post
 
 
 
@@ -74,3 +75,6 @@ https://fastapi.tiangolo.com/tutorial/sql-databases/
 
 Settings Management:
 https://docs.pydantic.dev/latest/concepts/pydantic_settings/#usage
+
+Alembic 1.14.1 documentation:
+https://alembic.sqlalchemy.org/en/latest/tutorial.html
