@@ -6,7 +6,7 @@
 
 - FastAPI
 - SQLAlchemy
-- Postgres
+- Postgres + asyncpg
 
 - Poetry
 - black
@@ -15,7 +15,8 @@
 
 ## Roadmap
 - [x] Структура проекта
-- [ ] Подключение к базе данных
+- [x] Подключение к базе данных
+- [ ] Подключить pydantic-settings
 - [ ] Летна постов
 
 
@@ -37,3 +38,9 @@ http://127.0.0.1:8000/docs
 ## Полезные ссылки:
 FastAPI Best Practices:
 https://github.com/zhanymkanov/fastapi-best-practices
+
+Database:
+https://fastapi.tiangolo.com/tutorial/sql-databases/
+
+Settings Management:
+https://docs.pydantic.dev/latest/concepts/pydantic_settings/#usage
