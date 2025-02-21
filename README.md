@@ -17,8 +17,10 @@
 - [x] Структура проекта
 - [x] Подключение к базе данных
 - [x] Подключить pydantic-settings
+- [x] Подключить Alembic alembic init --template async alembic
 - [ ] Летна постов
-    - [ ] Модель поста
+    - [x] Модель поста
+    - [ ] Создание поста
 
 
 
@@ -32,6 +34,33 @@ http://127.0.0.1:8000/docs
 
 
 ## DEVELOP
+## Alembic
+Изменить настройки env.py
+```
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+target_metadata = Base.metadata
+```
+
+
+### Creating async an Environment
+```bash
+alembic init --template async alembic
+```
+
+### Generate first migration
+```bash
+alembic revision --autogenerate -m "initial migration"
+```
+
+### Apply generated migration to the database:
+```bash
+alembic upgrade head
+```
+
+### Rolls back the last applied migration.
+```bash
+alembic downgrade -1
+```
 
 
 
